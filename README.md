@@ -2,12 +2,12 @@
 Open source tools and libraries for the Micro 3D Printer ( http://www.printm3d.com )
 Written in C# with cross-plattform in mind ! ( Mono & .NET Core Support )
 
-# Licensing   ![AGPLv3 Logo](/Misc/agplv3.png)
-------------
+# Licensing
 OpenM3D is Free Software and released under the [GNU Affero General Public License V3](http://www.gnu.org/licenses/agpl.html) license.
 
+![AGPLv3 Logo](/Misc/agplv3.png)
+
 ## Content
------------
 
 ### libgcode
 C# .NET library for easy object oriented manipulation of GCode
