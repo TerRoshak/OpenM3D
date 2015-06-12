@@ -2,6 +2,8 @@
 Open source tools and libraries for the Micro 3D Printer ( http://www.printm3d.com )
 Written in C# with cross-plattform in mind ! ( Mono & .NET Core Support )
 
+!!! -> GPLv3 <- !!!
+
 Preview :
 
 --- libgcode ---
