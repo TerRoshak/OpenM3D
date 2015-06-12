@@ -4,7 +4,9 @@ Written in C# with cross-plattform in mind ! ( Mono & .NET Core Support )
 
 ## Licensing
 ------------
-OpenM3D is Free Software and released under the [GNU Affero General Public License V3](http://www.gnu.org/licenses/agpl.html) license. ![AGPLv3 Logo](/Misc/AGPLv3.png)
+![AGPLv3 Logo](/Misc/agplv3.png)
+
+OpenM3D is Free Software and released under the [GNU Affero General Public License V3](http://www.gnu.org/licenses/agpl.html) license.
 
 ## Content
 -----------
