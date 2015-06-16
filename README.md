@@ -24,3 +24,8 @@ Also supporting Serial Loopback (virtual COM port) - Enabling direct print from 
 ### m3dev
 Miscellanious console tools
 (firmware & info related) - e.g. enabling autonomous maintenance on headless printservers
+
+### Home of "BIG" - Binary GCode
+Binary format to store gcode swiftly in files.
+Could be used as a new gcode flavour for printers as well
+see BIG-FORMAT.MD
