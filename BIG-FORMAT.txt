@@ -1,0 +1,66 @@
+### BIG - Binary GCode File/Protocol Format
+
+BIG supports every GCode feature available up to
+
+8 byte Double values
+Int64 integers
+Strings up to 256 bytes
+
+Speed comparison between several formats with my reference implementations :
+  Read Gcode File: 7,0004 (filebuffer)
+  Parse Gcode File: 2759,1578 (ascii -> g)
+  Save BIG File: 157,009 (g -> binary)
+  Load BIG File: 394,0226 (binary -> g)
+  Translate to repetier v2 File: 4973,2845 
+  Back to ASCII File: 1513,0866 (rep -> g -> ascii)
+
+For file representation use this header :
+(Header 19 byte)
+[3 Byte] - Identifier "BIG" 
+[16 Byte] - MD5 Hash of DATA
+
+(Data 1..n fields)
+(Filed identifier 2 byte)
+[1 Byte] F1: Field identifier & Field operator (5 bit / 3 bit)
+[1 Byte] F2: Field descriptor (Number type or string size)
+
+(F1 >> 3 : Field identifier)
+Decimal representation !
+0-25 : A-Z (N,S,T are int others are double ATM! - would be save to use all as double?)
+26 : * - INT following
+27 : () comment - string following ! (can be 0 length)
+28 : ; comment - string following ! (can be 0 length)
+29 : % - no field following ! no descriptor ! (some add comments here - not in the gcode standard!)
+30 reserved
+31 reserved
+
+(3 right most bits):
+0x01 : new line - end of one gcode "command line"
+0x02 : text compressed (6 bit gsm compression) - not implemented yet in c# reference
+0x04 : last field (eof) - future version can use the space behind eof to save metadata / thumbnails / whatever
+
+
+(F2 : Field descriptor)
+If Integer (Decimal represenation) :
+0 byte
+1 sbyte
+2 uint16
+3 int16
+4 uint32
+5 int32
+6 uint64
+7 int64
+8 float
+9 double
+If String : 1 B - Length of string following
+
+... next F1 / identiefier / field 
+
+That's it !
+
+Integers and Doubles are saved with the smallest possible type (check range before saving them)!
+Strings can be UTF-8 here but GCODE ASCII dictates ASCII ! (keep that in mind)
+
+Parser should implement the "last field" and "new line" bitfields as most
+machines cannot parse endless gcode. EOF could be recognized by physical end of file as well,
+but for future versions adding meta data behind the data field(s)..
