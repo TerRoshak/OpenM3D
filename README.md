@@ -28,4 +28,4 @@ Miscellanious console tools
 ### Home of "BIG" - Binary GCode
 Binary format to store gcode swiftly in files.
 Could be used as a new gcode flavour for printers as well
-see BIG-FORMAT.MD
+see BIG-FORMAT.txt
