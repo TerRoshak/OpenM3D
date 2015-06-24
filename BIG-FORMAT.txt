@@ -6,13 +6,23 @@ BIG supports every GCode feature available up to
 Int64 integers
 Strings up to 256 bytes
 
-Speed comparison between several formats with my reference implementations :
+Speed comparison between several formats with my reference implementations (i5-2520M):
   Read Gcode File: 7,0004 (filebuffer)
   Parse Gcode File: 2759,1578 (ascii -> g)
   Save BIG File: 157,009 (g -> binary)
   Load BIG File: 394,0226 (binary -> g)
   Translate to repetier v2 File: 4973,2845 
   Back to ASCII File: 1513,0866 (rep -> g -> ascii)
+  
+Raspberry Pi A+ (mono):
+  Read Gcode File: 706.537
+  Parse Gcode File: 126494.671
+  Save BIG File: 5324.44
+  Load BIG File: 10305.878
+  Translate to repetier v2 File: 139402.773
+  Back to ASCII File: 85818.397
+
+=> BIG is very efficient even on the Raspberry Pi (still using 8 byte Doubles and Int64 !!!)
 
 For file representation use this header :
 (Header 19 byte)
